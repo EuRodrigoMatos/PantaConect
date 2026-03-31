@@ -11,100 +11,128 @@ if (!isset($_SESSION['usuario'])) {
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>PantaConect</title>
+<meta charset="UTF-8">
+<title>PantaConect</title>
 
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #0f172a;
-            color: #fff;
-            margin: 0;
-        }
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #020617, #0f172a);
+    color: #e2e8f0;
+    margin: 0;
+}
 
-        /* 🔝 TOPO */
-        .topbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            background: #020617;
-            border-bottom: 1px solid #1e293b;
-        }
+/* 🔝 TOPO */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 30px;
+    background: rgba(2, 6, 23, 0.8);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #1e293b;
+}
 
-        .topbar h1 {
-            font-size: 20px;
-            margin: 0;
-        }
+.topbar h1 {
+    font-size: 20px;
+    margin: 0;
+}
 
-        .user-info {
-            font-size: 14px;
-            color: #94a3b8;
-        }
+.user-info {
+    font-size: 14px;
+    color: #94a3b8;
+}
 
-        .logout {
-            margin-left: 15px;
-            color: #f87171;
-            text-decoration: none;
-        }
+.logout {
+    margin-left: 15px;
+    color: #f87171;
+    text-decoration: none;
+}
 
-        /* 📦 CONTAINER */
-        .container {
-            padding: 40px;
-            text-align: center;
-        }
+/* 📦 CONTAINER */
+.container {
+    padding: 50px 40px;
+    text-align: center;
+}
 
-        .subtitle {
-            color: #94a3b8;
-            margin-bottom: 40px;
-        }
+.subtitle {
+    color: #94a3b8;
+    margin-bottom: 40px;
+}
 
-        /* 🎛️ MENU */
-        .menu {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
+/* 🎛️ MENU GRID */
+.menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    max-width: 900px;
+    margin: 0 auto;
+}
 
-        .card {
-            background: #1e293b;
-            padding: 25px;
-            border-radius: 12px;
-            width: 230px;
-            transition: 0.3s;
-        }
+/* 🧊 CARD PREMIUM */
+.card {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    padding: 25px;
+    border-radius: 16px;
+    transition: all 0.25s ease;
+    border: 1px solid #334155;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
 
-        .card:hover {
-            background: #2563eb;
-            transform: translateY(-5px);
-        }
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(120deg, transparent, #2563eb, transparent);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    opacity: 0;
+    transition: 0.3s;
+}
 
-        .icon {
-            font-size: 38px;
-            margin-bottom: 10px;
-        }
+.card:hover::before {
+    opacity: 1;
+}
 
-        .title {
-            font-weight: bold;
-        }
+.card:hover {
+    transform: translateY(-6px) scale(1.02);
+}
 
-        a {
-            text-decoration: none;
-            color: white;
-        }
+/* 🎯 ÍCONE */
+.icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
 
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            color: #64748b;
-            font-size: 12px;
-        }
-    </style>
+/* 🧠 TÍTULO */
+.title {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+/* LINK */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    margin-top: 60px;
+    color: #64748b;
+    font-size: 12px;
+}
+</style>
+
 </head>
 <body>
 
-<!-- 🔝 TOPO PADRÃO -->
+<!-- 🔝 TOPO -->
 <div class="topbar">
     <h1>🚀 PantaConect</h1>
 
@@ -122,32 +150,29 @@ if (!isset($_SESSION['usuario'])) {
 
     <div class="menu">
 
-        <!-- 🔐 ADMIN -->
-       <?php if ($_SESSION['perfil'] == 'admin' || $_SESSION['perfil'] == 'tecnico'): ?>
-        <div class="card">
-            <a href="modules/acessos/acessos.php">
+        <?php if ($_SESSION['perfil'] == 'admin' || $_SESSION['perfil'] == 'tecnico'): ?>
+        <a href="modules/acessos/acessos.php">
+            <div class="card">
                 <div class="icon">🔐</div>
                 <div class="title">Gerenciar Acessos</div>
-            </a>
-        </div>
+            </div>
+        </a>
         <?php endif; ?>
 
-        <!-- 📋 TODOS -->
-        <div class="card">
-            <a href="modules/solicitacoes/nova.php">
+        <a href="modules/solicitacoes/nova.php">
+            <div class="card">
                 <div class="icon">📋</div>
                 <div class="title">Nova Solicitação</div>
-            </a>
-        </div>
+            </div>
+        </a>
 
-        <!-- 🛠️ TI -->
         <?php if ($_SESSION['perfil'] == 'tecnico' || $_SESSION['perfil'] == 'admin'): ?>
-        <div class="card">
-            <a href="modules/solicitacoes/lista.php">
+        <a href="modules/solicitacoes/lista.php">
+            <div class="card">
                 <div class="icon">🛠️</div>
                 <div class="title">Painel TI</div>
-            </a>
-        </div>
+            </div>
+        </a>
         <?php endif; ?>
 
     </div>

@@ -48,7 +48,7 @@ $acessos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <style>
 body {
     font-family: 'Segoe UI', sans-serif;
-    background-color: #0f172a;
+    background: linear-gradient(135deg, #020617, #0f172a);
     color: #fff;
     margin: 0;
 }
@@ -57,7 +57,7 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 15px 30px;
-    background: #020617;
+    background: rgba(2,6,23,0.9);
     border-bottom: 1px solid #1e293b;
 }
 
@@ -65,28 +65,40 @@ body {
     padding: 30px;
 }
 
+/* CARD */
 .card {
     background: #1e293b;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     margin-bottom: 20px;
+    border: 1px solid #334155;
 }
 
+/* INPUTS */
 input, select {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
     margin-bottom: 15px;
-    border-radius: 6px;
-    border: none;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    background: #020617;
+    color: #fff;
+}
+
+/* BOTÕES */
+.actions {
+    display: flex;
+    gap: 10px;
 }
 
 button {
+    flex: 1;
     background: #2563eb;
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 6px;
+    padding: 10px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
@@ -94,6 +106,23 @@ button:hover {
     background: #1d4ed8;
 }
 
+.btn-voltar {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #334155;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.btn-voltar:hover {
+    background: #475569;
+}
+
+/* LISTA */
 .lista {
     list-style: none;
     padding: 0;
@@ -107,18 +136,23 @@ button:hover {
     align-items: center;
 }
 
-.acoes a {
-    margin-left: 10px;
-    text-decoration: none;
-    font-size: 14px;
+.lista li:hover {
+    background: #334155;
+}
+
+.acoes {
+    display: flex;
+    gap: 10px;
 }
 
 .editar {
     color: #38bdf8;
+    text-decoration: none;
 }
 
 .excluir {
     color: #f87171;
+    text-decoration: none;
 }
 </style>
 
@@ -142,6 +176,7 @@ button:hover {
         <h3>Novo Acesso</h3>
 
         <form method="POST">
+
             <label>Nome</label>
             <input type="text" name="nome" required>
 
@@ -152,7 +187,11 @@ button:hover {
                 <option value="Outro">Outro</option>
             </select>
 
-            <button type="submit">Salvar</button>
+            <div class="actions">
+                <button type="submit">Salvar</button>
+                <a href="/PantaConect/index.php" class="btn-voltar">Voltar</a>
+            </div>
+
         </form>
     </div>
 

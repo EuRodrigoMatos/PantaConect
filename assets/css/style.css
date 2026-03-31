@@ -1,3 +1,4 @@
+/* RESET */
 body {
     font-family: 'Segoe UI', sans-serif;
     background-color: #0f172a;
@@ -5,82 +6,229 @@ body {
     margin: 0;
 }
 
-/* TOPO */
+/* 🔝 TOPO */
 .topbar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 15px 30px;
     background: #020617;
     border-bottom: 1px solid #1e293b;
 }
 
-/* CONTAINER */
-.container {
-    padding: 30px;
+.topbar h1 {
+    font-size: 20px;
+    margin: 0;
 }
 
-/* CENTRALIZADO */
-.centered {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 60px);
+.user-info {
+    font-size: 14px;
+    color: #94a3b8;
 }
 
-/* CARD */
-.card {
-    background: #1e293b;
-    padding: 25px;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 500px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-}
-
-/* INPUTS */
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border-radius: 6px;
-    border: none;
-}
-
-/* BOTÕES */
-button {
-    background: #2563eb;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #1d4ed8;
-}
-
-/* LINKS */
-a {
+.logout {
+    margin-left: 15px;
+    color: #f87171;
     text-decoration: none;
 }
 
-.voltar {
-    color: #38bdf8;
+/* 📦 CONTAINER */
+.container {
+    padding: 40px;
+    text-align: center;
+}
+
+.subtitle {
+    color: #94a3b8;
+    margin-bottom: 40px;
+}
+
+/* 🎛️ MENU */
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #1e293b;
+    padding: 25px;
+    border-radius: 12px;
+    width: 230px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    background: #2563eb;
+    transform: translateY(-5px);
+}
+
+.icon {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    margin-top: 60px;
+    color: #64748b;
+    font-size: 12px;
+}/* 📦 CARD */
+.card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #334155;
+}
+
+/* 🧾 FORM */
+.input, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    background: #020617;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+/* 🔘 BOTÕES */
+.btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background: #2563eb;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
 }
 
 .btn-danger {
     background: #ef4444;
+    color: #fff;
 }
 
-.btn-danger:hover {
-    background: #dc2626;
+/* 📋 LISTA */
+.lista {
+    list-style: none;
+    padding: 0;
 }
 
-.btn-cancel {
+.lista li {
+    padding: 14px;
+    border-bottom: 1px solid #334155;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lista li:hover {
     background: #334155;
-    color: white;
-    padding: 10px;
-    border-radius: 6px;
+}
+
+.acoes {
+    display: flex;
+    gap: 10px;
+}
+/* 📊 GRID DE SOLICITAÇÕES */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* 📦 CARD SOLICITAÇÃO */
+.card-solicitacao {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+    transition: 0.2s;
+}
+
+.card-solicitacao:hover {
+    transform: translateY(-3px);
+    border-color: #2563eb;
+}
+
+/* 🏷️ BADGES */
+.badge {
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.badge-pendente {
+    background: #f59e0b20;
+    color: #f59e0b;
+}
+
+.badge-concluido {
+    background: #22c55e20;
+    color: #22c55e;
+}
+
+/* 🔘 BOTÃO FULL */
+.btn-full {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+}.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.card-solicitacao {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 20px;
+    transition: 0.2s;
+}
+
+.card-solicitacao:hover {
+    transform: translateY(-3px);
+    border-color: #2563eb;
+}
+
+.badge {
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+}
+
+.badge-pendente {
+    background: #f59e0b20;
+    color: #f59e0b;
+}
+
+.badge-concluido {
+    background: #22c55e20;
+    color: #22c55e;
+}
+
+.btn-full {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
 }
