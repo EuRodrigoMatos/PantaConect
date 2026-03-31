@@ -1,0 +1,86 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #0f172a;
+    color: #fff;
+    margin: 0;
+}
+
+/* TOPO */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background: #020617;
+    border-bottom: 1px solid #1e293b;
+}
+
+/* CONTAINER */
+.container {
+    padding: 30px;
+}
+
+/* CENTRALIZADO */
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px);
+}
+
+/* CARD */
+.card {
+    background: #1e293b;
+    padding: 25px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* INPUTS */
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: none;
+}
+
+/* BOTÕES */
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+/* LINKS */
+a {
+    text-decoration: none;
+}
+
+.voltar {
+    color: #38bdf8;
+}
+
+.btn-danger {
+    background: #ef4444;
+}
+
+.btn-danger:hover {
+    background: #dc2626;
+}
+
+.btn-cancel {
+    background: #334155;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+}

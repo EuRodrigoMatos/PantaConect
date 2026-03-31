@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// 🔒 proteção
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,32 +16,54 @@
 
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             background-color: #0f172a;
             color: #fff;
-            text-align: center;
             margin: 0;
-            padding: 0;
         }
 
+        /* 🔝 TOPO */
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: #020617;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .topbar h1 {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .user-info {
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        .logout {
+            margin-left: 15px;
+            color: #f87171;
+            text-decoration: none;
+        }
+
+        /* 📦 CONTAINER */
         .container {
-            margin-top: 80px;
-        }
-
-        h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
+            padding: 40px;
+            text-align: center;
         }
 
         .subtitle {
             color: #94a3b8;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
+        /* 🎛️ MENU */
         .menu {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 25px;
             flex-wrap: wrap;
         }
 
@@ -39,34 +71,32 @@
             background: #1e293b;
             padding: 25px;
             border-radius: 12px;
-            width: 240px;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            width: 230px;
+            transition: 0.3s;
         }
 
         .card:hover {
             background: #2563eb;
-            transform: scale(1.05);
+            transform: translateY(-5px);
         }
 
         .icon {
-            font-size: 40px;
+            font-size: 38px;
             margin-bottom: 10px;
+        }
+
+        .title {
+            font-weight: bold;
         }
 
         a {
             text-decoration: none;
             color: white;
-            display: block;
-        }
-
-        .title {
-            font-size: 16px;
-            font-weight: bold;
         }
 
         footer {
-            margin-top: 80px;
+            text-align: center;
+            margin-top: 60px;
             color: #64748b;
             font-size: 12px;
         }
@@ -74,36 +104,51 @@
 </head>
 <body>
 
+<!-- 🔝 TOPO PADRÃO -->
+<div class="topbar">
+    <h1>🚀 PantaConect</h1>
+
+    <div class="user-info">
+        👤 <?php echo $_SESSION['usuario']; ?> (<?php echo $_SESSION['perfil']; ?>)
+        <a href="logout.php" class="logout">Sair</a>
+    </div>
+</div>
+
+<!-- 📦 CONTEÚDO -->
 <div class="container">
 
-    <h1>🚀 PantaConect</h1>
+    <h2>Dashboard</h2>
     <p class="subtitle">Gestão de acessos, onboarding e offboarding</p>
 
     <div class="menu">
 
-        <!-- 🔐 ACESSOS -->
+        <!-- 🔐 ADMIN -->
+       <?php if ($_SESSION['perfil'] == 'admin' || $_SESSION['perfil'] == 'tecnico'): ?>
         <div class="card">
             <a href="modules/acessos/acessos.php">
                 <div class="icon">🔐</div>
                 <div class="title">Gerenciar Acessos</div>
             </a>
         </div>
+        <?php endif; ?>
 
-        <!-- 📋 RH -->
+        <!-- 📋 TODOS -->
         <div class="card">
             <a href="modules/solicitacoes/nova.php">
                 <div class="icon">📋</div>
-                <div class="title">Nova Solicitação (RH)</div>
+                <div class="title">Nova Solicitação</div>
             </a>
         </div>
 
         <!-- 🛠️ TI -->
+        <?php if ($_SESSION['perfil'] == 'tecnico' || $_SESSION['perfil'] == 'admin'): ?>
         <div class="card">
             <a href="modules/solicitacoes/lista.php">
                 <div class="icon">🛠️</div>
                 <div class="title">Painel TI</div>
             </a>
         </div>
+        <?php endif; ?>
 
     </div>
 
